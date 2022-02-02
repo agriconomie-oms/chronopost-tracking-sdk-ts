@@ -1,0 +1,6 @@
+generatorName: typescript-axios
+gitUserId: agriconomie-oms
+gitRepoId: chronopost-tracking-sdk-ts
+legacyDiscriminatorBehavior: false
+npmName: '@agriconomie-oms/chronopost-tracking-sdk-ts'
+supportsES6: true
