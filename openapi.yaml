@@ -10,7 +10,7 @@ info:
   license:
     name: GNU
     url: 'https://'
-  version: 5.4.0
+  version: 5.4.1
 servers:
   - url: 'https://api.laposte.fr/suivi/v2'
 tags:
@@ -239,68 +239,72 @@ components:
       type: array
       description: List of event given into anti chronological order
       items:
-        type: object
-        required:
-          - order
-          - date
-          - label
-          - code
-        properties:
-          date:
-            type: string
-            format: date-time
-            description: 'Event''s date, format aaaa-mm-jjThh:mn:ss+hh:mn.'
-            example: '2020-12-07T00:00:00+01:00'
-          label:
-            type: string
-            description: Event's message.
-          code:
-            type: string
-            description: Event's code.
+        $ref: '#/components/schemas/eventItem'
+    eventItem:
+      type: object
+      required:
+        - order
+        - date
+        - label
+        - code
+      properties:
+        date:
+          type: string
+          format: date-time
+          description: 'Event''s date, format aaaa-mm-jjThh:mn:ss+hh:mn.'
+          example: '2020-12-07T00:00:00+01:00'
+        label:
+          type: string
+          description: Event's message.
+        code:
+          type: string
+          description: Event's code.
     timeline:
       type: array
       description: 'Definition of timeline : 5 items given'
       items:
-        type: object
-        required:
-          - id
-          - shortLabel
-          - status
-          - type
-        properties:
-          id:
-            type: number
-            description: Step's identifier (1 to 5).
-            enum:
-              - 1
-              - 2
-              - 3
-              - 4
-              - 5
-          shortLabel:
-            type: string
-            description: 'Step''s short label, displayed onto timeline.'
-          longLabel:
-            type: string
-            description: 'Step''s long label, displayed into hot zone.'
-          status:
-            type: boolean
-            description: Is step active?
-          type:
-            type: number
-            description: 'Kind of step : 1=OK, 0=Information, -1=KO.'
-            enum:
-              - 1
-              - 0
-              - -1
-          date:
-            type: string
-            format: date-time
-            description: 'Event''s date, format aaaa-mm-jjThh:mn:ss+hh:mn.'
-            example: '2020-12-07T00:00:00+01:00'
-          country:
-            type: string
-            description: Event's country code.
+        $ref: '#/components/schemas/timelineItem'
+    timelineItem:
+      type: object
+      required:
+        - id
+        - shortLabel
+        - status
+        - type
+      properties:
+        id:
+          type: number
+          description: Step's identifier (1 to 5).
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+        shortLabel:
+          type: string
+          description: 'Step''s short label, displayed onto timeline.'
+        longLabel:
+          type: string
+          description: 'Step''s long label, displayed into hot zone.'
+        status:
+          type: boolean
+          description: Is step active?
+        type:
+          type: number
+          description: 'Kind of step : 1=OK, 0=Information, -1=KO.'
+          enum:
+            - 1
+            - 0
+            - -1
+        date:
+          type: string
+          format: date-time
+          description: 'Event''s date, format aaaa-mm-jjThh:mn:ss+hh:mn.'
+          example: '2020-12-07T00:00:00+01:00'
+        country:
+          type: string
+          description: Event's country code.
     message:
       items:
         type: object

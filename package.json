@@ -1,6 +1,6 @@
 {
   "name": "@agriconomie-oms/chronopost-tracking-sdk-ts",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "description": "OpenAPI client for @agriconomie-oms/chronopost-tracking-sdk-ts",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [

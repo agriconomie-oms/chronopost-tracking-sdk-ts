@@ -119,6 +119,31 @@ export interface DeliveryChoice {
     'deliveryChoice': number;
 }
 /**
+ * 
+ * @export
+ * @interface EventItem
+ */
+export interface EventItem {
+    /**
+     * Event\'s date, format aaaa-mm-jjThh:mn:ss+hh:mn.
+     * @type {string}
+     * @memberof EventItem
+     */
+    'date': string;
+    /**
+     * Event\'s message.
+     * @type {string}
+     * @memberof EventItem
+     */
+    'label': string;
+    /**
+     * Event\'s code.
+     * @type {string}
+     * @memberof EventItem
+     */
+    'code': string;
+}
+/**
  * Product object returned
  * @export
  * @interface Product
@@ -411,16 +436,16 @@ export interface Shipment {
     'contextData'?: ContextData;
     /**
      * Definition of timeline : 5 items given
-     * @type {Array<object>}
+     * @type {Array<TimelineItem>}
      * @memberof Shipment
      */
-    'timeline'?: Array<object>;
+    'timeline'?: Array<TimelineItem>;
     /**
      * List of event given into anti chronological order
-     * @type {Array<object>}
+     * @type {Array<EventItem>}
      * @memberof Shipment
      */
-    'event'?: Array<object>;
+    'event'?: Array<EventItem>;
     /**
      * 
      * @type {Array<object>}
@@ -445,6 +470,77 @@ export enum ShipmentHolderEnum {
     NUMBER_1 = 1,
     NUMBER_3 = 3,
     NUMBER_4 = 4
+}
+
+/**
+ * 
+ * @export
+ * @interface TimelineItem
+ */
+export interface TimelineItem {
+    /**
+     * Step\'s identifier (1 to 5).
+     * @type {number}
+     * @memberof TimelineItem
+     */
+    'id': TimelineItemIdEnum;
+    /**
+     * Step\'s short label, displayed onto timeline.
+     * @type {string}
+     * @memberof TimelineItem
+     */
+    'shortLabel': string;
+    /**
+     * Step\'s long label, displayed into hot zone.
+     * @type {string}
+     * @memberof TimelineItem
+     */
+    'longLabel'?: string;
+    /**
+     * Is step active?
+     * @type {boolean}
+     * @memberof TimelineItem
+     */
+    'status': boolean;
+    /**
+     * Kind of step : 1=OK, 0=Information, -1=KO.
+     * @type {number}
+     * @memberof TimelineItem
+     */
+    'type': TimelineItemTypeEnum;
+    /**
+     * Event\'s date, format aaaa-mm-jjThh:mn:ss+hh:mn.
+     * @type {string}
+     * @memberof TimelineItem
+     */
+    'date'?: string;
+    /**
+     * Event\'s country code.
+     * @type {string}
+     * @memberof TimelineItem
+     */
+    'country'?: string;
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum TimelineItemIdEnum {
+    NUMBER_1 = 1,
+    NUMBER_2 = 2,
+    NUMBER_3 = 3,
+    NUMBER_4 = 4,
+    NUMBER_5 = 5
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum TimelineItemTypeEnum {
+    NUMBER_1 = 1,
+    NUMBER_0 = 0,
+    NUMBER_MINUS_1 = -1
 }
 
 
